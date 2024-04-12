@@ -1,13 +1,14 @@
 import React from "react";
 
-const VerifyDialog: React.FC = () => {
+const PrefsDialog: React.FC = () => {
   return (
     <div className="mx-auto w-full max-w-md rounded-lg border border-slate-300 bg-white shadow-md">
       <div className="p-6 text-center">
-        <h2 className="mb-4 text-3xl font-medium">Verify your email</h2>
-        <div className="mb-4 font-medium">
-          Enter the 8 digit code you have received on your email
-        </div>
+        <h2 className="mb-4 text-3xl font-medium">
+          Please mark your interests.
+        </h2>
+        <div className="mb-4 font-medium">We will keep you notified.</div>
+        <div className="mb-4 text-xl font-medium">My saved interestes!</div>
         <form className="pt-5">
           <div className="mb-8">
             <label
@@ -84,7 +85,6 @@ const VerifyDialog: React.FC = () => {
             </div>
           </div>
           <button
-            tabIndex={9}
             type="submit"
             className="w-full rounded-md bg-black px-4 py-2 text-center text-white hover:bg-gray-700 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
           >
@@ -96,4 +96,4 @@ const VerifyDialog: React.FC = () => {
   );
 };
 
-export default VerifyDialog;
+export default PrefsDialog;
