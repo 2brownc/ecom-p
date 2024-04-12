@@ -19,64 +19,64 @@ const VerifyDialog: React.FC = () => {
             <div className="flex-row space-x-2">
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code1"
+                name="code1"
                 className="w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={1}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code2"
+                name="code2"
                 className="w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={2}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code3"
+                name="code3"
                 className=" w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={3}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code4"
+                name="code4"
                 className=" w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={4}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code5"
+                name="code5"
                 className=" w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={5}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code6"
+                name="code6"
                 className=" w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={6}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code7"
+                name="code7"
                 className=" w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={7}
               />
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="code8"
+                name="code8"
                 className=" w-9 rounded-md border border-slate-300 p-2 text-center shadow-sm transition duration-300 ease-in hover:border-slate-500 focus:outline-none focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 required
                 tabIndex={8}
