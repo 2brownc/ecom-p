@@ -45,4 +45,3 @@ yarn-error.log*
 # temp
 
 src/app/login
-src/app/signup
