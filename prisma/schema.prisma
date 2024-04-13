@@ -6,23 +6,28 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url   = env("DATABASE_URL")
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
 }
 
-model Users {
-  id Int @id @default(autoincrement())
-  name String
-  passSHA512 String
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  passhash  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  UserPrefs UserPrefs[]
-  @@index([name])
+
+  // Relationships
+  interestedCategories Category[]
 }
 
-model UserPrefs {
-  id Int @id @default(autoincrement())
-  prefs  Json
-  user   Users    @relation(fields: [userId], references: [id])
-  userId Int
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  users      User[]
 }
