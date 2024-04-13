@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { seedCategories } from "./db/seed";
+import { seedCategories, createDefaultUser } from "./db/seed";
 
 import { env } from "~/env";
 
@@ -21,3 +21,14 @@ if (env.NODE_ENV !== "production") globalForPrisma.prisma = db;
 seedCategories().catch((error) => {
   console.error("Error seeding categories:", error);
 });
+
+// if default user account is not created, create one
+const name = process.env.DEMO_USERNAME;
+const passhash = process.env.DEMO_PASSHASH;
+const email = process.env.DEMO_EMAIL;
+
+if (name && passhash && email) {
+  createDefaultUser(name, email, passhash).catch((error) => {
+    console.error("Error seeding categories: ", error);
+  });
+}

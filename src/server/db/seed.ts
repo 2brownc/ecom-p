@@ -1,5 +1,7 @@
 import { db } from "../db";
 import { faker } from "@faker-js/faker";
+import { env } from "~/env";
+import { checkUser, createAccount } from "../auth/account";
 
 const CATEGORY_LIMIT = 100;
 
@@ -61,5 +63,25 @@ export async function seedCategories(overwrite = false) {
     await db.category.createMany({
       data: categoriesToInsert,
     });
+  }
+}
+
+export async function createDefaultUser(
+  name: string,
+  email: string,
+  passhash: string,
+) {
+  try {
+    await checkUser(email, passhash);
+    return true;
+  } catch (error) {
+    // default user does not exist so create it
+    try {
+      await createAccount(name, email, passhash);
+      return true;
+    } catch (error) {
+      // failes to create user
+      return false;
+    }
   }
 }
