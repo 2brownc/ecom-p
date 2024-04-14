@@ -1,6 +1,5 @@
 import { db } from "../db";
 import { faker } from "@faker-js/faker";
-import { env } from "~/env";
 import { checkUser, createAccount } from "../auth/account";
 
 const CATEGORY_LIMIT = 100;

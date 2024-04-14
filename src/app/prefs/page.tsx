@@ -5,6 +5,7 @@ import prefsdata from "../_components/CatManager/data";
 
 const PrefsDialog: React.FC = () => {
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
+
   return (
     <div className="mx-auto w-full max-w-lg rounded-lg border border-slate-300 bg-white p-8 shadow-md">
       <div className="p-6 text-center">

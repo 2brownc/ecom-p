@@ -1,4 +1,5 @@
 import React from "react";
+import { handleLogin } from "../actions";
 
 const LoginDialog: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const LoginDialog: React.FC = () => {
         <div className="mb-4 font-medium">
           The next gen bussiness market place
         </div>
-        <form className="pt-5">
+        <form className="pt-5" action={handleLogin}>
           <div className="mb-4">
             <label
               htmlFor="email"
