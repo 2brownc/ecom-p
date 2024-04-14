@@ -45,8 +45,8 @@ const CatManager: React.FC<CatManagerProps> = ({
       <div className="mb-8">
         <div className="flex flex-col">
           {prefs.map(
-            (pref) =>
-              isOnCurrentPage(pref.id) && (
+            (pref, index) =>
+              isOnCurrentPage(index) && (
                 <div key={pref.id}>
                   <CheckBox
                     pref={pref}

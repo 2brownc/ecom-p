@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { db } from "~/server/db";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { sha512 } from "~/server/auth/utils";
 

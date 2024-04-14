@@ -1,11 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CatManager from "../_components/CatManager/CatManager";
-import prefsdata from "../_components/CatManager/data";
 import { logoutUser } from "../actions";
+import { api } from "~/trpc/react";
+import type { Pref } from "../../types/types";
 
 const PrefsDialog: React.FC = () => {
   const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
+  const getAllCategoriesQuery = api.categories.getAllCategories.useQuery();
+  const prefsData =
+    getAllCategoriesQuery?.data?.map(({ id, name }): Pref => ({ id, name })) ??
+    [];
+
+  console.log("prefsData: ", prefsData.length);
+
+  /*
+  useEffect(() => {
+    console.log("prefs: ", getAllCategoriesQuery.data?.length);
+    if (getAllCategoriesQuery.data) {
+      setPrefsData(
+        getAllCategoriesQuery.data.map(({ id, name }): Pref => ({ id, name })),
+      );
+    }
+  }, [setPrefsData, getAllCategoriesQuery]);
+  */
 
   return (
     <>
@@ -30,7 +48,7 @@ const PrefsDialog: React.FC = () => {
               My saved interests!
             </div>
             <CatManager
-              prefs={prefsdata}
+              prefs={prefsData}
               selectedPrefs={selectedPrefs}
               setSelectedPrefs={setSelectedPrefs}
             />

@@ -8,7 +8,7 @@ import { FaEllipsis } from "react-icons/fa6";
 
 import classNames from "classnames";
 
-const PAGING_RANGE = 6;
+const PAGING_RANGE = 4;
 
 interface PagerProps {
   currentPage: number;
@@ -106,8 +106,8 @@ const Pager: React.FC<PagerProps> = ({
   const renderButtons = () => {
     const buttons = [];
 
-    let start = currentPage - Math.floor(PAGING_RANGE / 2);
-    let stop = currentPage + Math.floor(PAGING_RANGE / 2);
+    let start = (currentPage - PAGING_RANGE / 2) | 0;
+    let stop = (currentPage + PAGING_RANGE / 2) | 0;
 
     // Calculate start and stop page numbers
     if (start < 1) start = 1;
@@ -125,13 +125,12 @@ const Pager: React.FC<PagerProps> = ({
       );
     }
 
-    // Render page number buttons
     for (let i = start; i <= stop; i++) {
       buttons.push(
         <button
           key={i}
           className={classNames(
-            "inline-flex items-center rounded-md px-4 py-2 text-base font-medium",
+            "inline-flex w-12 items-center rounded-md px-4 py-2 font-mono text-base font-medium",
             { "bg-black text-white": currentPage === i },
             { "text-gray-700 hover:bg-gray-200": currentPage !== i },
           )}
