@@ -20,7 +20,6 @@ export const logout = async () => {
 };
 
 export const checkAuthentication = async () => {
-  console.log("is auth: ", cookies().get("ecom-auth-status")?.value);
   return true;
   // return cookies().get("ecom-auth-status")?.value === "loggedin";
 };
@@ -40,14 +39,6 @@ export const handleLogin = async (formData: FormData) => {
   // Get email and password from form
   const email = formData.get("email") as string;
   const passhash = sha512(formData.get("password") as string);
-
-  // Log received credentials
-  console.log(
-    "received creds: ",
-    email,
-    formData.get("password") as string,
-    passhash,
-  );
 
   try {
     // Check user credentials

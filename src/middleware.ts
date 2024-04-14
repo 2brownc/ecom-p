@@ -25,6 +25,16 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (request.nextUrl.pathname === "/") {
+    // Check if user is already authenticated
+    const isAuthenticated = await checkAuthentication();
+
+    // If authenticated, redirect to prefs page
+    if (isAuthenticated) {
+      return NextResponse.rewrite(new URL("/prefs", request.url));
+    }
+  }
+
   // Check if trying to access signup page
   if (request.nextUrl.pathname.startsWith("/signup")) {
     // Check if user is already authenticated
