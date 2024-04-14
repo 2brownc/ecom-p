@@ -12,16 +12,28 @@ const cookieConfig = {
 };
 */
 
-export const logout = async () => {
-  // logout and unset cookies
+export const unsetCookies = async () => {
+  // unset cookies
   cookies().set("ecom-auth-status", "loggedout");
   cookies().delete("ecom-email");
   cookies().delete("ecom-username");
 };
 
+export const setCookies = async (user: { email: string; name: string }) => {
+  console.log("setting cookies for ", { user });
+  cookies().set("ecom-email", user.email);
+  cookies().set("ecom-username", user.name);
+  cookies().set("ecom-auth-status", "loggedin");
+
+  console.log(
+    "setCookies: ecom-auth-status: ",
+    cookies().get("ecom-auth-status")?.value,
+  );
+};
+
 export const checkAuthentication = async () => {
-  return true;
-  // return cookies().get("ecom-auth-status")?.value === "loggedin";
+  console.log("auth status: ", cookies().get("ecom-auth-status")?.value);
+  return cookies().get("ecom-auth-status")?.value === "loggedin";
 };
 
 // Load preferences page
@@ -32,6 +44,11 @@ const loadPrefsPage = async () => {
 // Load login page
 const loadLoginPage = async () => {
   redirect("/login");
+};
+
+export const logoutUser = async () => {
+  await unsetCookies();
+  await loadLoginPage();
 };
 
 // Handle login form submission
@@ -46,16 +63,15 @@ export const handleLogin = async (formData: FormData) => {
 
     // If credentials valid, set auth cookies
     if (user) {
-      cookies().set("ecom-email", user.email);
-      cookies().set("ecom-username", user.name);
-      cookies().set("ecom-auth-status", "loggedin");
+      console.log("user in db", { user });
+      await setCookies(user);
     }
-
-    // Load preferences page if login succeeded
-    await loadPrefsPage();
   } catch (error) {
     // Logout and load login page if login failed
-    await logout();
-    await loadLoginPage();
+    console.log("handleLogin: error:: ", error);
+    await logoutUser();
   }
+
+  // Load preferences page if login succeeded
+  await loadPrefsPage();
 };
