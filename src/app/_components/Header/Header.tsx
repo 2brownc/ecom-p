@@ -5,13 +5,13 @@ function Header() {
   return (
     <header className="flex flex-col">
       <div className="flex items-center justify-end bg-gray-800 px-4 py-2 text-white">
-        <a href="#" className="mr-4 hover:underline">
+        <a href="#" className="mr-4 rounded px-2 py-1 hover:bg-gray-700">
           Help
         </a>
-        <a href="#" className="mr-4 hover:underline">
+        <a href="#" className="mr-4 rounded px-2 py-1 hover:bg-gray-700">
           Orders & Returns
         </a>
-        <a href="#" className="hover:underline">
+        <a href="#" className="mr-4 rounded px-2 py-1 hover:bg-gray-700">
           User Profile
         </a>
       </div>

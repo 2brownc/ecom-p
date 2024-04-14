@@ -20,19 +20,12 @@ export const unsetCookies = async () => {
 };
 
 export const setCookies = async (user: { email: string; name: string }) => {
-  console.log("setting cookies for ", { user });
   cookies().set("ecom-email", user.email);
   cookies().set("ecom-username", user.name);
   cookies().set("ecom-auth-status", "loggedin");
-
-  console.log(
-    "setCookies: ecom-auth-status: ",
-    cookies().get("ecom-auth-status")?.value,
-  );
 };
 
 export const checkAuthentication = async () => {
-  console.log("auth status: ", cookies().get("ecom-auth-status")?.value);
   return cookies().get("ecom-auth-status")?.value === "loggedin";
 };
 
@@ -63,12 +56,10 @@ export const handleLogin = async (formData: FormData) => {
 
     // If credentials valid, set auth cookies
     if (user) {
-      console.log("user in db", { user });
       await setCookies(user);
     }
   } catch (error) {
     // Logout and load login page if login failed
-    console.log("handleLogin: error:: ", error);
     await logoutUser();
   }
 
